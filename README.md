@@ -2,12 +2,9 @@
 
 NGINX + Docker Compose で、ALB / API Gateway っぽい **入口処理**（パスルーティング、共通ヘッダ付与、レート制限、upstream 停止時の fallback）を小さく再現するデモです。
 
-- GitHub: https://github.com/masanori0209/nginx-alb-gateway-demo
-- 解説記事（Zenn）: 公開後に URL を追記
+解説記事（Zenn）: https://zenn.dev/masanori0209/articles/nginx-docker-compose-alb-gateway
 
-:::message
-このリポジトリは、AWS ALB / API Gateway / Cloud Load Balancing の **完全な置き換え** ではありません。マネージドサービスで何を買っているのかを手触りで理解するための、ローカル実験用です。
-:::
+> **Note:** このリポジトリは AWS ALB / API Gateway / Cloud Load Balancing の **完全な置き換え** ではありません。マネージドサービスで何を買っているのかを手触りで理解するための、ローカル実験用です。
 
 ## できること
 
@@ -70,13 +67,6 @@ chmod +x scripts/verify.sh
 ./scripts/verify.sh
 ```
 
-記事用のターミナル PNG / GIF を再生成する場合:
-
-```bash
-chmod +x scripts/capture-media.sh
-./scripts/capture-media.sh
-```
-
 ## 構成
 
 ```text
@@ -85,7 +75,8 @@ nginx-alb-gateway-demo/
 ├── nginx/
 │   └── nginx.conf
 ├── scripts/
-│   └── verify.sh
+│   ├── verify.sh
+│   └── capture-media.sh
 └── README.md
 ```
 
@@ -94,20 +85,6 @@ nginx-alb-gateway-demo/
 ```bash
 docker compose down
 ```
-
-## GitHub へ公開する場合（メモ）
-
-ローカルで初回 push する例:
-
-```bash
-cd nginx-alb-gateway-demo
-git init
-git add .
-git commit -m "Initial commit: NGINX gateway routing demo"
-gh repo create masanori0209/nginx-alb-gateway-demo --public --source=. --remote=origin --push
-```
-
-`gh` がない場合は GitHub 上で空リポジトリを作り、`git remote add origin git@github.com:masanori0209/nginx-alb-gateway-demo.git` から push してください。
 
 ## ライセンス
 
