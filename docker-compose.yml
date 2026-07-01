@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "${DEMO_PORT:-8080}:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api-a
+      - api-b
+
+  api-a:
+    image: hashicorp/http-echo:1.0.0
+    command: ["-text=Hello from API A"]
+
+  api-b:
+    image: hashicorp/http-echo:1.0.0
+    command: ["-text=Hello from API B"]
